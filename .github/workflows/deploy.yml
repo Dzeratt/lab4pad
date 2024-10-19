@@ -2,19 +2,26 @@ name: CI/CD
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Copy files
+        run: |
+          VERSION=${{  github.ref_name }}
+          mkdir -p "./pages/${VERSION}"
+          cp -r ./en "./pages/${VERSION}/"
+          cp -r ./ru "./pages/${VERSION}/"
         
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: peaceiris/actions-gh-pages@v4
         with:
-           branch: gh-pages
-           folder: .
            github_token: ${{ secrets.GITHUB_TOKEN }}
+           publish_dir: ./pages
+           keep_files: true

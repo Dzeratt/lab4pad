@@ -5,7 +5,7 @@ on:
     types: [created]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,5 +16,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
            branch: gh-pages
-           folder: ./pages
+           folder: .
            github_token: ${{ secrets.GITHUB_TOKEN }}

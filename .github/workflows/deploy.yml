@@ -18,4 +18,3 @@ jobs:
            branch: gh-pages
            folder: ./pages
            github_token: ${{ secrets.GITHUB_TOKEN }}
-           target_branch: gh-pages

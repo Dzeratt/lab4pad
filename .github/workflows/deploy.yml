@@ -18,6 +18,7 @@ jobs:
           mkdir -p "./pages/${VERSION}"
           cp -r ./en "./pages/${VERSION}/"
           cp -r ./ru "./pages/${VERSION}/"
+          cp -r ./index.html "./pages/${VERSION}/"
         
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
